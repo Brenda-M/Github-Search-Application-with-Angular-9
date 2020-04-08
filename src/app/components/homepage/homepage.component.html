@@ -1,14 +1,33 @@
-
-<div class="container" >
+<div class="jumbotron jumbotron-fluid back-top"> 
+    <button (click)="showUserForm = !showUserForm" class="btn btn-dark text-center">Search By User</button>
+    <!-- <button (click)="showRepoForm = !showRepoForm" class="btn btn-dark text-center">Search By Repos</button> -->
+  <div class="container" *ngIf="showUserForm">
+    <div class="search">
+      <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
+        <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
+        <button class="close-btn" type="submit">Search</button>
+      </form>
+    </div> 
+  </div>
+  <!-- <div class="container" *ngIf="showRepoForm">
+    <div class="search">
+      <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
+        <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
+        <button class="close-btn" type="submit">Search</button>
+      </form>
+    </div> 
+  </div> -->
+</div>
+<div class="container">
   <div class="row">
     <div class="col-md-5">
       <div class="card">
-        <h4 class="card-header"> </h4>
+        <h4 class="card-header text-center"> User Profile</h4>
         <div class="card-block">
           <div class="row">
             <div class="col-md-4">
               <img src="{{ userProfile.avatar_url }}" class="img-thumbnail ml-1 mt-4">
-              <a class="btn btn-sm btn-primary mt-2 ml-1" href="userProfile.html_url" target="_blank"> View on Github </a>
+              <a class="btn btn-sm btn-primary mt-2 ml-1" href="{{ userProfile.html_url }}" target="_blank"> View on Github </a>
             </div>
 
             <div class="col-md-7 mt-4">
@@ -17,7 +36,7 @@
                 <li class="list-group-item"> <b>Location:</b> {{ userProfile.location}}</li>
                 <li class="list-group-item"> <b>Bio:</b> {{ userProfile.bio}}</li>
                 <li class="list-group-item"> <b>Hire Status:</b> {{ userProfile.hireable }}</li> 
-                <li class="list-group-item"> <b>Joined on:</b> {{ userProfile.created_at }}</li> 
+                <li class="list-group-item"> <b>Joined:</b> {{ userProfile.created_at | dateAgo }} <span><b>On</b>: {{ userProfile.created_at | date }}</span></li> 
               </ul>
             </div>
           </div>
@@ -34,6 +53,18 @@
             </span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card">
+        <h5 class="card-header text-center">User Repositories</h5>
+        <ul class="list-group" *ngFor='let repository of repoService.reposList'>
+          <li class="list-group-item"> 
+            <a href="{{repository.html_url}}" target="_blank"><h6 >{{ repository.name }}</h6></a>
+            <p> {{ repository.description }}</p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

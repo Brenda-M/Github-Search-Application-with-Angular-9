@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
-// import { HttpClient } from '@angular/common/http';
 
 import { User } from '../../models/user';
-// import { environment } from 'src/environments/environment';
+import { Repository } from '../../models/repository';
 
 @Component({
   selector: 'app-homepage',
@@ -14,33 +13,24 @@ import { User } from '../../models/user';
 export class HomepageComponent implements OnInit {
 
   userProfile: User;
-  // userName: string;
-  // apiUrl: string = 'https://api.github.com/users/';
-  // apiKey: string = "environment.accessToken";
+  reposList: any;
+  userName: string;
+  showUserForm: boolean = false;
+  showRepoForm: boolean = false;
+  @ViewChild ('userForm') form: any;
 
-  constructor(public profileService: ProfileService) {
+  constructor(public userService: ProfileService, public repoService: ProfileService) {
   }
 
+  findUser(value){
+    this.userService.updateProfile(this.userName);
+    this.ngOnInit();
+    this.form.reset();
+  }
 
   ngOnInit() {
-    this.profileService.getMyData();
-    this.userProfile = this.profileService.userProfile;
-    console.log(this.userProfile)
-
-
-    // interface ApiResponse{
-    //   login: string;
-    //   avatar_url: string;
-    //   followers: number;
-    //   following: number;
-    //   bio: string;
-    //   repos: number;
-    // }
-
-    // this.userName = "Brenda-M";
-    // this.http.get<ApiResponse>(this.apiUrl + this.userName + "?access_token=" + environment.accessToken).subscribe(data => {
-    //   this.userProfile = new User (data.login, data.avatar_url, data.followers, data.following, data.bio,data.repos)
-    // })
-
+    this.userService.getMyData();
+    this.userProfile = this.userService.userProfile;
+    this.repoService.getMyRepos();
   }
 }
