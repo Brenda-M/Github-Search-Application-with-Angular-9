@@ -78,25 +78,26 @@ export class ProfileService {
 
   }
 
+  // search by repository functionality
   searchRepos(){
     interface SearchRepoResponse{
        list:any;
     }
 
-    // const promise = new Promise((resolve, reject) => {
-    //   this.http.get<SearchRepoResponse>(this.repoApiUrl + 'repositories?q=' + 'hello' + '&per_page=10' + environment.accessToken).toPromise().then(getRepositories => {
-    //     this.findRepos = getRepositories;
-    //     console.log(this.findRepos)
-    //     resolve()
-    //   });
-    // });
-    const repoPromise = new Promise((resolve, reject) => {
-      this.http.get<SearchRepoResponse>(this.repoApiUrl+ 'repositories?q=names:' + 'hello').toPromise().then(RepoResponse => {
-        this.findRepos = RepoResponse;
+    const promise = new Promise((resolve, reject) => {
+      this.http.get<SearchRepoResponse>(this.repoApiUrl + 'repositories?q=' + 'hello' + '&per_page=10' + environment.accessToken).toPromise().then(getRepositories => {
+        this.findRepos = getRepositories;
         console.log(this.findRepos)
-        resolve();
+        resolve()
       });
     });
+    // const repoPromise = new Promise((resolve, reject) => {
+    //   this.http.get<SearchRepoResponse>(this.repoApiUrl+ 'repositories?q=names:' + 'hello').toPromise().then(RepoResponse => {
+    //     this.findRepos = RepoResponse;
+    //     console.log(this.findRepos)
+    //     resolve();
+    //   });
+    // });
   }
 
 }

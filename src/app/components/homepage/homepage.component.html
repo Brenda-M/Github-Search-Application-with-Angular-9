@@ -1,6 +1,5 @@
 <div class="jumbotron jumbotron-fluid back-top"> 
     <button (click)="showUserForm = !showUserForm" class="btn btn-dark text-center">Search By User</button>
-    <!-- <button (click)="showRepoForm = !showRepoForm" class="btn btn-dark text-center">Search By Repos</button> -->
   <div class="container" *ngIf="showUserForm">
     <div class="search">
       <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
