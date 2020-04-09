@@ -9,69 +9,58 @@
       </form>
     </div> 
   </div>
-  <!-- <div class="container" *ngIf="showRepoForm">
+
+  <div class="container">
     <div class="search">
-      <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
-        <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
+      <form #repoForm="ngForm" (ngSubmit)="getRepositories(repoForm)">
+        <input type="text" class="input" placeholder="Enter Name of Repositories" name="searchRepository" [(ngModel)]="repoName">
         <button class="close-btn" type="submit">Search</button>
       </form>
     </div> 
-  </div> -->
+    {{ repoName }}
+  </div>
+
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-md-5">
-      <div class="card">
-        <h4 class="card-header text-center"> User Profile</h4>
-        <div class="card-block">
-          <div class="row">
-            <div class="col-md-4">
-              <img src="{{ userProfile.avatar_url }}" class="img-thumbnail ml-1 mt-4">
-              <a class="btn btn-sm btn-primary mt-2 ml-1" href="{{ userProfile.html_url }}" target="_blank"> View on Github </a>
-            </div>
-
-            <div class="col-md-7 mt-4">
-              <ul class="list-group">
-                <li class="list-group-item"> <b>Username:</b> {{ userProfile.login}}</li>
-                <li class="list-group-item"> <b>Location:</b> {{ userProfile.location}}</li>
-                <li class="list-group-item"> <b>Bio:</b> {{ userProfile.bio}}</li>
-                <li class="list-group-item"> <b>Hire Status:</b> {{ userProfile.hireable }}</li> 
-                <li class="list-group-item"> <b>Joined:</b> {{ userProfile.created_at | dateAgo }} <span><b>On</b>: {{ userProfile.created_at | date }}</span></li> 
-              </ul>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <span class="ml-3 bg-info">
-              {{ userProfile.followers}} followers
-            </span>
-            <span class="ml-3 bg-primary">
-              {{ userProfile.following}} following
-            </span>
-            <span class="ml-3 bg-danger">
-              {{ userProfile.public_repos}} Public repositories
-            </span>
-          </div>
-        </div>
+  <div class="card">
+    <h4 class="card-header"> User Profile</h4>
+    <div class="card-block"></div>
+    <div class="row">
+      <div class="col-md-3">
+        <img src="{{ userProfile.avatar_url }}" class="img-thumbnail ml-3 mt-4" style="width:200px; height: 200px;">
+        <a class="btn btn-sm btn-primary mt-2 ml-4" href="{{ userProfile.html_url }}" target="_blank"> View on Github </a>
+      </div>
+      <div class="col-md-8 mt-4">
+        <ul class="list-group">
+          <li class="list-group-item"> <b>Username:</b> {{ userProfile.login}}</li>
+          <li class="list-group-item"> <b>Location:</b> {{ userProfile.location}}</li>
+          <li class="list-group-item"> <b>Bio:</b> {{ userProfile.bio}}</li>
+          <li class="list-group-item"> <b>Hire Status:</b> {{ userProfile.hireable }}</li> 
+          <li class="list-group-item"> <b>Joined:</b> {{ userProfile.created_at | dateAgo }} <span></span></li> 
+        </ul>
+      </div>
+      <div class="mt-4">
+        <span class="ml-3 bg-info">
+          {{ userProfile.followers}} followers
+        </span>
+        <span class="ml-3 bg-primary">
+          {{ userProfile.following}} following
+        </span>
+        <span class="ml-3 bg-danger">
+          {{ userProfile.public_repos}} Public repositories
+        </span>
       </div>
     </div>
-
-    <div class="col-md-7">
+  </div>
+  <h5 class="text-center"> User Repositories </h5>
+  <div class="container repositories">
+    <div *ngFor='let repository of repoService.reposList' class="repos">
       <div class="card">
-        <h5 class="card-header text-center">User Repositories</h5>
-        <ul class="list-group" *ngFor='let repository of repoService.reposList'>
-          <li class="list-group-item"> 
-            <a href="{{repository.html_url}}" target="_blank"><h6 >{{ repository.name }}</h6></a>
-            <p> {{ repository.description }}</p>
-          </li>
-        </ul>
+        <div class="card-header"> {{ repository.name }}</div>
+        <div class="card-body">
+          <p> {{ repository.description }}</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-

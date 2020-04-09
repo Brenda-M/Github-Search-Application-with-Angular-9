@@ -15,6 +15,9 @@ export class HomepageComponent implements OnInit {
   userProfile: User;
   reposList: any;
   userName: string;
+  repoName: Repository;
+  findRepos: string;
+  resultCount: number;
   showUserForm: boolean = false;
   showRepoForm: boolean = false;
   @ViewChild ('userForm') form: any;
@@ -28,9 +31,17 @@ export class HomepageComponent implements OnInit {
     this.form.reset();
   }
 
+   getRepositories(value){
+    this.findRepos = '';
+    this.resultCount = 10;
+    console.log(this.findRepos)
+  }
+
   ngOnInit() {
     this.userService.getMyData();
     this.userProfile = this.userService.userProfile;
     this.repoService.getMyRepos();
   }
+
+ 
 }
