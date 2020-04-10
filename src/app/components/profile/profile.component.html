@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card">
+    <h4 class="card-header"> User Profile</h4>
+    <div class="card-block"></div>
+    <div class="row">
+      <div class="col-md-3">
+        <img src="{{ userProfile.avatar_url }}" class="img-thumbnail ml-3 mt-4" style="width:200px; height: 200px;">
+        <a class="btn btn-sm btn-primary mt-2 ml-4" href="{{ userProfile.html_url }}" target="_blank"> View on Github </a>
+      </div>
+      <div class="col-md-8 mt-4">
+        <ul class="list-group">
+          <li class="list-group-item" *ngIf="userProfile.login"> <b>Username:</b> {{ userProfile.login}}</li>
+          <li class="list-group-item" *ngIf="userProfile.location"> <b>Location:</b> {{ userProfile.location}}</li>
+          <li class="list-group-item" *ngIf="userProfile.bio"> <b>Bio:</b> {{ userProfile.bio}}</li>
+          <li class="list-group-item" *ngIf="userProfile.hireable"> <b>Hire Status:</b> Available for Hire</li> 
+          <li class="list-group-item" *ngIf="userProfile.created_at"> <b>Joined:</b> {{ userProfile.created_at | dateAgo }} <span style="float: right;"><b>On: </b>{{ userProfile.created_at | date }}</span></li> 
+        </ul>
+      </div>
+      <div class="mt-4">
+        <span class="ml-3 bg-info">
+          {{ userProfile.followers}} followers
+        </span>
+        <span class="ml-3 bg-primary">
+          {{ userProfile.following}} following
+        </span>
+        <span class="ml-3 bg-danger">
+          {{ userProfile.public_repos}} Public repositories
+        </span>
+      </div>
+    </div>
+  </div>
