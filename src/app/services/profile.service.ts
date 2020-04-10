@@ -11,22 +11,19 @@ import { Repository } from '../models/repository'
 export class ProfileService {
 
   userProfile: User;
-  userName: string;
-  repoName: string;
-  reposList: any;
-  findRepos: any;
   userRepos: Repository;
+  repoList: any;
+  repoOwner: any;
   myUserName: string;
   apiUrl: string = 'https://api.github.com/users/';
-  repoApiUrl: string = 'https://api.github.com/search/'
 
   constructor(private http: HttpClient) { 
     this.userProfile = new User ('', '', '', '', 0, '', '', new Date(), 0, 0);
-    this.userRepos = new Repository ('', '', '');
-    this.myUserName = 'Brenda-M';
+    this.userRepos = new Repository ('', '', '', '', '', 0, 0);
+    this.myUserName = 'Brenda-M'; 
   }
 
-  getMyData(){
+  getUserInfo(){
     interface ApiUserResponse{
       login: string;
       avatar_url: string;
@@ -38,10 +35,10 @@ export class ProfileService {
       created_at: Date;
       followers: number;
       following: number;
-  }
+    }
 
-  const promise = new Promise((resolve, reject) => {
-    this.http.get<ApiUserResponse>(this.apiUrl + this.myUserName + '?access_token=' + environment.accessToken).toPromise().then(userResponse => {
+    const promise = new Promise((resolve, reject) => {
+      this.http.get<ApiUserResponse>(this.apiUrl + this.myUserName + '?access_token=' + environment.accessToken).toPromise().then(userResponse => {
         this.userProfile.login = userResponse.login;
         this.userProfile.html_url = userResponse.html_url;
         this.userProfile.bio = userResponse.bio;
@@ -53,51 +50,32 @@ export class ProfileService {
         this.userProfile.followers = userResponse.followers;
         this.userProfile.following = userResponse.following;
         resolve();
+      });
     });
-  });
     return promise;
   }
 
-  updateProfile(userName){
-    this.myUserName = userName;
-  }
-
-  getMyRepos(){
+  getRepos(){
     interface ApiRepositoryResponse{
       name: string;
       description: string;
       html_url: string;
+      owner: any,
+      language: string,
+      forks_count: number,
+      watchers_count: number,
     }
 
     const repoPromise = new Promise((resolve, reject) => {
-      this.http.get<ApiRepositoryResponse>(this.apiUrl+ this.myUserName + '/repos?access_token=' + environment.accessToken).toPromise().then(RepoResponse => {
-        this.reposList = RepoResponse;
+      this.http.get<ApiRepositoryResponse>(this.apiUrl+ this.myUserName + '/repos?access_token=' + environment.accessToken).toPromise().then(repoResponse => {
+        this.repoList = repoResponse;
         resolve();
       });
     });
-
   }
 
-  // search by repository functionality
-  searchRepos(){
-    interface SearchRepoResponse{
-       list:any;
-    }
-
-    const promise = new Promise((resolve, reject) => {
-      this.http.get<SearchRepoResponse>(this.repoApiUrl + 'repositories?q=' + 'hello' + '&per_page=10' + environment.accessToken).toPromise().then(getRepositories => {
-        this.findRepos = getRepositories;
-        console.log(this.findRepos)
-        resolve()
-      });
-    });
-    // const repoPromise = new Promise((resolve, reject) => {
-    //   this.http.get<SearchRepoResponse>(this.repoApiUrl+ 'repositories?q=names:' + 'hello').toPromise().then(RepoResponse => {
-    //     this.findRepos = RepoResponse;
-    //     console.log(this.findRepos)
-    //     resolve();
-    //   });
-    // });
+  updateProfile(userName){
+    this.myUserName = userName;
   }
 
 }
