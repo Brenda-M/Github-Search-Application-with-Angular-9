@@ -1,0 +1,40 @@
+.container-header{
+  background-color: aqua;
+  height: 200px;
+}
+
+.card-header{
+  font-weight: bold;
+  text-align: center;
+}
+
+.repositories{
+    margin-bottom: 30px;
+    margin-right: 20px;
+    padding: 0;
+}
+
+/* .card-body{
+  justify-content: space-between;
+  flex-direction: column;
+} */
+
+.demo{
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+}
+/* .repos{
+  display: flex;
+  flex-direction: row; 
+
+}  */
+
+.footer{
+  background-color:rgb(33, 37, 41);
+  text-align: center;
+  color: white;
+  height: 150px;
+}
