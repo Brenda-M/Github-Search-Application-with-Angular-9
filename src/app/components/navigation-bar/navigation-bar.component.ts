@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../../services/profile.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
+  userName: string;
+  userProfile: User;
 
-  constructor() { }
+  constructor(public userService: ProfileService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.userService.getUserInfo();
+    this.userProfile = this.userService.userProfile;
   }
 
 }
