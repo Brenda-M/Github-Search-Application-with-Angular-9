@@ -1,0 +1,41 @@
+<div class="container-header" >
+  <app-navigation-bar></app-navigation-bar>
+  <div class="show-form">
+    <button class="btn btn-dark text-center">Search By Repository</button>
+  </div>   
+  <div class="wrapper">
+    <form #repoForm="ngForm" (ngSubmit)="findRepo(repoForm); repoForm.reset()">
+      <input type="text" class="input" placeholder="Enter Name of Repositories" name="searchRepository" [(ngModel)]="repoSearchName">
+      <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus"></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="container card">
+  <div  *ngFor='let repos of searchReposService.searchResults["items"]
+ '>
+  <div appHighlight class="card repositories">
+    <div class="card-header"> {{ repos.name }}</div>
+    <div class="card-body">
+      <p><b>Created by: </b>{{ repos.owner.login}}</p>
+      <p><b>Brief Description of repository: </b> {{ repos.description }}</p>
+    </div>
+    <div class="card-subtitle">
+      <span class="badge badge-primary ml-3">
+        {{ repos.forks_count}} forks
+      </span>
+      <span class="badge badge-success ml-3">
+        {{ repos.watchers_count }} watchers
+      </span>
+      <span class="badge badge-danger ml-3"><a href="{{ repos.html_url }}" target="_blank"> <i class="fa fa-github"> View</i></a>
+      </span>
+    </div>   
+  </div>
+</div>
+</div>
+
+
+      <!-- Load More -->
+<!-- <div class="loadMore">
+  <button class="btn btn-outline-info my-2 my-sm-0 loadMore" (click)=loadMore()>Load More</button>
+</div> -->
