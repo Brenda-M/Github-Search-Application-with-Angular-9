@@ -13,6 +13,7 @@ export class GithubReposService {
   findRepos: any;
   searchResults:  Repository;
   repoName: string;
+  view: number = 10;
   repoApiUrl: string = 'https://api.github.com/search/'
   
 
@@ -32,11 +33,18 @@ export class GithubReposService {
     }
 
     const promise = new Promise((resolve, reject) => {
-      this.http.get<SearchRepoResponse>(this.repoApiUrl + 'repositories?q=' + repoSearchName + '&per_page=10&access_token=' + environment.accessToken).toPromise().then(getRepositories => {
+      this.http.get<SearchRepoResponse>(this.repoApiUrl + 'repositories?q=' + repoSearchName + '&per_page=' + this.view + '&access_token=' + environment.accessToken).toPromise().then(getRepositories => {
         this.searchResults = getRepositories;
         console.log(this.searchResults)
         resolve()
+      }, error => {
+        reject(error);
       });
     });
+    return promise;
   } 
+
+  updateView(view:number){
+    this.view = this.view+10
+  }
 }
