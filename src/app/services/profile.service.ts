@@ -50,6 +50,8 @@ export class ProfileService {
         this.userProfile.followers = userResponse.followers;
         this.userProfile.following = userResponse.following;
         resolve();
+      }, error => {
+        reject(error);
       });
     });
     return promise;
@@ -63,13 +65,15 @@ export class ProfileService {
       owner: any,
       language: string,
       forks_count: number,
-      watchers_count: number,
+      watchers_count: number, 
     }
 
     const repoPromise = new Promise((resolve, reject) => {
       this.http.get<ApiRepositoryResponse>(this.apiUrl+ this.myUserName + '/repos?access_token=' + environment.accessToken).toPromise().then(repoResponse => {
         this.repoList = repoResponse;
         resolve();
+      }, error => {
+        reject(error);
       });
     });
   }
