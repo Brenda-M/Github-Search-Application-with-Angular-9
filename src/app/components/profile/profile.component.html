@@ -1,16 +1,15 @@
 <div class="container-header">
   <app-navigation-bar></app-navigation-bar>
   <div class="show-form">
-    <button (click)="showUserForm = !showUserForm" class="btn btn-dark text-center">Search By User</button>
+    <button class="btn btn-dark text-center">Search By User</button>
   </div>   
-  <div class="wrapper" *ngIf="showUserForm">
+  <div class="wrapper">
     <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
       <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
       <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus"></i></button>
     </form>
   </div>
 </div>
-
 <div class="container container-fluid">
   <div class="card">
     <h4 class="card-header"> User Profile</h4>
@@ -50,30 +49,33 @@
       <div appHighlight class="card repositories">
         <div class="card-header"> {{ repository.name }}</div>
         <div class="card-body">
+          <div class="details">
           <p> {{ repository.description }}</p>
+          </div>
+          <hr>
+          <div class="moredetails">
+            <p *ngIf="repository.language"><b>Language:</b> {{ repository.language}}</p>
+            <p><b>Last Updated on:</b>{{repository.updated_at | date}}</p>
+          </div>
           <hr>
           <div class="card-subtitle">
-            <span *ngIf="repository.language"class="badge badge-danger ml-3">
-            {{ repository.language}}
-          </span>
-          <span class="badge badge-danger ml-3">
-            {{ repository.forks_count}}
-          </span>
-          <span class="badge badge-danger ml-3">
-            {{ repository.watchers_count }}
-          </span>
-          <span class="badge badge-danger ml-3">
-            <i class="fa fa-github"> View</i>
-          </span>
-        </div>
-         
+            <span class="badge badge-primary ml-3">
+              {{ repository.forks_count}} forks
+            </span>
+            <span class="badge badge-success ml-3">
+              {{ repository.watchers_count }} watchers
+            </span>
+            <span class="badge badge-danger ml-3">
+              <i class="fa fa-github"> View</i>
+            </span>
+          </div>   
         </div> 
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="footer">
-  <h5>copyright</h5>
-</div>
+<footer class="page-footer">
+  <div class="footer-copyright text-center">
+    <h6>© 2020 Copyright: Muthoni Njuguna</h6>
+  </div>
+</footer>

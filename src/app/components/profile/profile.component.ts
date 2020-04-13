@@ -17,8 +17,6 @@ export class ProfileComponent implements OnInit {
   repoName: string;
   foundRepos: any;
   repoSearchName: string;
-  showUserForm: boolean = true;
-  showRepoForm: boolean = false;
   repoList: Repository;
 
   constructor(public userService: ProfileService, public repoService: ProfileService, public searchReposService:  GithubReposService) { }
