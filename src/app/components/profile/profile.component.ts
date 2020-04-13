@@ -28,14 +28,13 @@ export class ProfileComponent implements OnInit {
     this.ngOnInit();
   }
 
-  findRepo(value){
-    this.searchReposService.searchRepos(this.repoSearchName);
-  }
+  
 
   ngOnInit() {
     this.userService.getUserInfo();
     this.userProfile = this.userService.userProfile;
     this.repoService.getRepos(); 
+    this.searchReposService.searchRepos(this.repoSearchName);
   }
 
 }

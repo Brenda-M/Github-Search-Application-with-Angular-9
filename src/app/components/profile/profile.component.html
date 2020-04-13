@@ -1,24 +1,14 @@
 <div class="container-header">
-  <div>
-    <button (click)="showUserForm = !showUserForm ; showRepoForm=false" class="btn btn-dark text-center">Search By User</button>
-    <button (click)="showRepoForm = !showRepoForm; showUserForm= false" class="btn btn-dark text-center">Search By Repo</button>
+  <app-navigation-bar></app-navigation-bar>
+  <div class="show-form">
+    <button (click)="showUserForm = !showUserForm" class="btn btn-dark text-center">Search By User</button>
   </div>   
-  <div class="container" *ngIf="showUserForm">
-    <div class="search">
-      <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
-        <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
-        <button class="close-btn" type="submit">Search</button>
-      </form>
-    </div> 
+  <div class="wrapper" *ngIf="showUserForm">
+    <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
+      <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
+      <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus"></i></button>
+    </form>
   </div>
-  <div class="container" *ngIf="showRepoForm" >
-    <div class="search">
-      <form #repoForm="ngForm" (ngSubmit)="findRepo(repoForm)">
-        <input type="text" class="input" placeholder="Enter Name of Repositories" name="searchRepository" [(ngModel)]="repoSearchName">
-        <button class="close-btn" type="submit">Search</button>
-      </form>
-      </div>
-    </div> 
 </div>
 
 <div class="container container-fluid">
@@ -40,13 +30,13 @@
           </ul>
         </div>
         <div class="mt-4">
-          <span class="ml-3 bg-info">
+          <span class="badge badge-info ml-3 mr-3">
             {{ userProfile.followers}} followers
           </span>
-          <span class="ml-3 bg-primary">
+          <span class="badge badge-primary ml-3">
             {{ userProfile.following}} following
           </span>
-          <span class="ml-3 bg-danger">
+          <span class="badge badge-danger ml-3">
             {{ userProfile.public_repos}} Public repositories
           </span>
         </div>
@@ -56,16 +46,34 @@
   <h5 class="text-center"> {{userProfile.login}}'s Repositories </h5>
   <hr>
   <div class="container demo">
-    <div  *ngFor='let repository of repoService.repoList' class="repos">
+    <div  *ngFor='let repository of repoService.repoList'>
       <div appHighlight class="card repositories">
         <div class="card-header"> {{ repository.name }}</div>
         <div class="card-body">
           <p> {{ repository.description }}</p>
-      </div>    
+          <hr>
+          <div class="card-subtitle">
+            <span *ngIf="repository.language"class="badge badge-danger ml-3">
+            {{ repository.language}}
+          </span>
+          <span class="badge badge-danger ml-3">
+            {{ repository.forks_count}}
+          </span>
+          <span class="badge badge-danger ml-3">
+            {{ repository.watchers_count }}
+          </span>
+          <span class="badge badge-danger ml-3">
+            <i class="fa fa-github"> View</i>
+          </span>
+        </div>
+         
+        </div> 
       </div>
     </div>
   </div>
 </div>
+
+
 <div class="footer">
   <h5>copyright</h5>
 </div>
