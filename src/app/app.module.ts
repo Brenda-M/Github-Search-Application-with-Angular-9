@@ -5,16 +5,22 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { RepositoriesComponent } from './components/repositories/repositories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     NavigationBarComponent,
-    DateAgoPipe
+    DateAgoPipe,
+    ProfileComponent,
+    NotFoundComponent,
+    HighlightDirective,
+    RepositoriesComponent
   ],
   imports: [
     BrowserModule,

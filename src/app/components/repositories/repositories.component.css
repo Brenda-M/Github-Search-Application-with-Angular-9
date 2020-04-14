@@ -52,10 +52,25 @@
 }
 
 .searchbtn {
-    background: #ffec00;
-    width: 15%;
-    height: 100%;
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
+  background: #ffec00;
+  width: 15%;
+  height: 100%;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.page-footer{
+  background-color:rgb(33, 37, 41);
+  font-weight: bold;
+  text-align: center;
+  height: 20vh;
+  color: white;
+  padding-top: 50px;
+}
+
+.loadMore{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

@@ -18,7 +18,7 @@ export class GithubReposService {
   
 
   constructor(private http: HttpClient) { 
-    this.searchResults = new Repository ('', '', '', '', '', 0, 0)
+    this.searchResults = new Repository ('', '', '', '', '', 0, 0, new Date())
   }
 
   searchRepos(repoSearchName){
@@ -30,6 +30,7 @@ export class GithubReposService {
       language: string,
       forks_count: number,
       watchers_count: number, 
+      updated_at: Date,
     }
 
     const promise = new Promise((resolve, reject) => {

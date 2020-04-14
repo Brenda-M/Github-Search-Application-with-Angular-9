@@ -19,7 +19,7 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { 
     this.userProfile = new User ('', '', '', '', 0, '', '', new Date(), 0, 0);
-    this.userRepos = new Repository ('', '', '', '', '', 0, 0);
+    this.userRepos = new Repository ('', '', '', '', '', 0, 0, new Date());
     this.myUserName = 'Brenda-M'; 
   }
 

@@ -4,7 +4,7 @@
     <button class="btn btn-dark text-center">Search By User</button>
   </div>   
   <div class="wrapper">
-    <form #userForm="ngForm" (ngSubmit)="findUser(userForm)">
+    <form #userForm="ngForm" (ngSubmit)="findUser(userForm); userForm.reset()">
       <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
       <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus"></i></button>
     </form>
@@ -65,7 +65,7 @@
             <span class="badge badge-success ml-3">
               {{ repository.watchers_count }} watchers
             </span>
-            <span class="badge badge-danger ml-3"><a href="{{ repository.html_url }}" target="_blank"> <i class="fa fa-github"> View</i></a>
+            <span class="badge badge-danger ml-3"><a href="{{ repository.html_url }}" target="_blank"> <i class="fas fa-github"> View</i></a>
             </span>
           </div>   
         </div> 
