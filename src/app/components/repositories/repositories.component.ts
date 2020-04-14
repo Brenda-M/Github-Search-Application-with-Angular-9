@@ -22,11 +22,6 @@ export class RepositoriesComponent implements OnInit {
     this.searchReposService.searchRepos(this.repoSearchName);
   }
 
-  loadMore(){
-    this.searchReposService.updateView(this.view);
-    this.searchReposService.searchRepos(this.repoSearchName);
-  };
-
   ngOnInit(){
 
   }
