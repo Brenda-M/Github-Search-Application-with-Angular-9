@@ -1,27 +1,52 @@
-# GithubSearch
+# Project Name
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+  GithubSearch
 
-## Development server
+# Author Information
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  Muthoni Njuguna 
 
-## Code scaffolding
+## Description
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  This project was generated with Angular CLI version 9.0.7. It allows users to search through the github Api for user profiles and repositories.
 
-## Build
+## Specifications
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The program has the following user behavior specifications:
 
-## Running unit tests
+User Behaviour: User decides to search for User-Profile.
+Input: Write user name on search form.
+Output: The profile details of the user appears. 
+User Behaviour: User decides to search for repositories.
+Input - Click on repositories tab.
+      - Enter name of repository on search form.
+Output - Opens repositories page.
+        - List of repositories appear. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies Used
 
-## Running end-to-end tests
+  - TypeScript
+  - HTML
+  - CSS
+  - Angular CLI version 9.0.7
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Setup/Installation Requirements
 
-## Further help
+  1. Before running this application on your local machine, ensure that you have npm and Angular installed.
+  2. Once you are done with the step above, proceed to clone the application by running git clone https://github.com/Brenda-M/Github-Search-Application-with-Angular-9.git on the teminal. 
+  3. Navigate to the project’s directory through your terminal. 
+  4. Run ng serve --open, which should initiate and open a server that will display the application on your browser.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Link to the Deployed Page
+
+https://brenda-m.github.io/Github-Search-Application-with-Angular-9/
+
+## Contact Information
+
+In case of any feedback, you can reach me through:
+  -brendanjuguna1@gmail.com
+
+## License
+
+The MIT License (MIT)
+Copyright (c) 2020 Muthoni Njuguna.
