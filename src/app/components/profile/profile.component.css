@@ -37,38 +37,42 @@ hr{
   margin-top: 120px;
 }
 
-.wrapper{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0,0.6);
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-}
-
-.wrapper .input {
-  width: 85%;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.searchbtn {
-  background: #ffec00;
-  width: 15%;
-  height: 100%;
-  border-radius: 5px;
-  position: relative;
-  cursor: pointer;
-}
-
 .card-header{
   font-weight: bold;
   text-align: center;
+} 
+
+.close-btn{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  background:aqua;
+  color: white;
+  border-radius: 50px;
+  text-transform: uppercase; 
+  font-weight: bold;
+  outline: none;
+}
+
+.input{
+  width: 350px;
+  border: 3px solid #fff;
+  background: transparent;
+  padding: 10px 15px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 20px;
+  outline: none;
+}
+
+.wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .repositories{
@@ -79,11 +83,26 @@ hr{
   height: 450px;
 }
 
+::placeholder{
+  color: rgb(48, 5, 5);
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .demo{
   display: flex;
   flex-direction: row; 
   flex-wrap: wrap;
   justify-content: center;
+}
+
+button:active{
+  transform: scale(0.95);
+}
+
+input:focus, button:focus{
+  outline: none;
 }
 
 .badge{

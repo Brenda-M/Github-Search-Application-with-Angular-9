@@ -6,7 +6,7 @@
   <div class="wrapper">
     <form #userForm="ngForm" (ngSubmit)="findUser(userForm); userForm.reset()">
       <input type="text" class="input" placeholder="Enter UserName" name="searchUser" [(ngModel)]="userName">
-      <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus"></i></button>
+      <button class="close-btn searchbtn" type="submit">Search</button>
     </form>
   </div>
 </div>

@@ -6,11 +6,10 @@
   <div class="wrapper">
     <form #repoForm="ngForm" (ngSubmit)="findRepo(repoForm); repoForm.reset()">
       <input type="text" class="input" placeholder="Enter Name of Repositories" name="searchRepository" [(ngModel)]="repoSearchName">
-      <button class="close-btn searchbtn" type="submit"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+      <button class="close-btn searchbtn" type="submit">Search</button>
     </form>
   </div>
 </div>
-
 <div class="container card">
   <div  *ngFor='let repos of searchReposService.searchResults["items"]
  '>
